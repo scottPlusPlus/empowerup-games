@@ -1,13 +1,12 @@
-import { Item } from "~/models/item.server";
-import { ScrapedInfo } from "../datatypes/info";
-import { SearchTermT } from "../datatypes/SearchTermT";
+import { ScoutInfo, ScoutItem } from "@/src/sharedCode/scoutTypes";
+import { SearchTermT } from "./SearchTermT";
 
 export function remapItemPriorities(
-  items: Item[],
-  infoMap: Map<string, ScrapedInfo>,
+  items: ScoutItem[],
+  infoMap: Map<string, ScoutInfo>,
   searchParams: SearchTermT[],
   caseSensitive: Boolean = false
-): Item[] {
+): ScoutItem[] {
   const includes = (strA: string, strB: string) => {
     return strA.toLowerCase().includes(strB.toLowerCase());
   };
@@ -44,22 +43,4 @@ export function remapItemPriorities(
     return item;
   });
   return prioritizedItems;
-}
-
-export function itemsFromRemixData(
-  items: object[],
-  infoMap: Map<string, ScrapedInfo>
-): Item[] {
-  const allItems:Item[] = items.map((item) => {
-    return JSON.parse(JSON.stringify(item));
-  });
-  var loadedItems = allItems.filter((item) => {
-    const info = infoMap.get(item.url);
-    if (!info) {
-      console.log("missing info for " + item.url);
-      return false;
-    }
-    return true;
-  });
-  return loadedItems;
 }
