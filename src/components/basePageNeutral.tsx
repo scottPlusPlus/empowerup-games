@@ -5,7 +5,7 @@ type Props = {
     children: React.ReactNode,
 }
 
-export function BasePage(props: Props) {
+export function BasePageNeutral(props: Props) {
     return (
         <div className={gameCommonCss.bgNeutral}>
             <BaseWidth>

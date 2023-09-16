@@ -9,6 +9,9 @@ import { remapItemPriorities } from "./itemUtils";
 import { ScoutInfo, ScoutItem } from "@/src/sharedCode/scoutTypes";
 import { deepCopyArray } from "@/src/agnostic/utils/arrayUtils";
 import { ScoutCss } from "./ScoutCss";
+import SearchInputField from "./SearchInputField";
+import { BaseWidth } from "../BaseWidth";
+import { gameCommonCss } from "@/src/frontCode/gameCss";
 
 type Props = {
     loadedItems: ScoutItem[],
@@ -21,10 +24,6 @@ type Props = {
 }
 
 export default function SearchableItemDisplay(props: Props) {
-
-    console.log("SearchableItemDisplay render:");
-    const infoCount = Array.from(props.infoMap.entries()).length;
-    console.log("infos: " + infoCount);
 
     const [searchTerms, setSearchTerms] = useState<SearchTermT[]>(props.initialTerms);
     const [sortedItems, setSortedItems] = useState<ScoutItem[]>(props.loadedItems);
@@ -47,7 +46,7 @@ export default function SearchableItemDisplay(props: Props) {
         const oldTermsStr = JSON.stringify(oldTerms);
         //console.log("SID: current terms = " + oldTermsStr);
 
-        const validTerms = newTerms.filter(term => {
+        var validTerms = newTerms.filter(term => {
             return term.term.length > 0
         });
         const prioritizedItems = remapItemPriorities(props.loadedItems, props.infoMap, validTerms)
@@ -89,13 +88,18 @@ export default function SearchableItemDisplay(props: Props) {
         if (count() <= 0) {
             return null;
         }
-        return (<p>{count()} Hidden Items</p>)
+        return (<p className="pt-4 text-white">{count()} Hidden Items</p>)
     }
 
     return (
         <>
-            <div className={props.scoutCss.SECTION_BG}>
-                <DynamicInputFields searchTerms={deepCopyArray(searchTerms)} onChange={(x) => { handleSearchUpdate(x) }} />
+            <header className={"fixed top-14 left-0 right-0 py-2 z-40 shadow-md " + gameCommonCss.bgNeutral}>
+                <BaseWidth>
+                    <SearchInputField searchTerms={deepCopyArray(searchTerms)} onChange={(x) => { handleSearchUpdate(x) }} />
+                </BaseWidth>
+            </header>
+            <div className="h-16"></div>
+            <div>
                 <TagCloud items={props.loadedItems} onTagClick={handleTagClick} scoutCss={props.scoutCss} />
                 {hiddenItemMsg()}
             </div>

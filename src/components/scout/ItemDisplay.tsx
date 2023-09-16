@@ -11,9 +11,6 @@ type ItemProps = {
 }
 
 export default function ItemDisplay(props: ItemProps) {
-    // console.log("Render ItemDisplay for " + props.item.url);
-    // console.log("info:  " + JSON.stringify(props.info));
-
     const handleLinkClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
         if (props.onLinkClick) {
             props.onLinkClick(props.item.url);
@@ -31,8 +28,8 @@ export default function ItemDisplay(props: ItemProps) {
     if (thisDisplayUrl.startsWith("www.")) {
         thisDisplayUrl = thisDisplayUrl.substring(4);
     }
-    if (thisDisplayUrl.length > 32){
-        thisDisplayUrl = thisDisplayUrl.substring(0,30) + "...";
+    if (thisDisplayUrl.length > 32) {
+        thisDisplayUrl = thisDisplayUrl.substring(0, 30) + "...";
     }
 
     return (
@@ -45,21 +42,20 @@ export default function ItemDisplay(props: ItemProps) {
                     {thisDisplayUrl}
                 </a>
                 <h2 className="font-bold mb-2">{props.info.title}</h2>
-                <p className="text-gray-700 text-base">{props.info.summary}</p>
-                <p className="text-gray-700 text-base">- - - - - </p>
-                {
-                    props.item.status == "pending" && (
-                        <button key={"pending"} className={props.scoutCss.ITEM_TAG}>
-                            {"pending"}
+                <div className="pt-0 pb-2">
+                    {props.item.tags.map(tag => (
+                        <button key={tag} onClick={() => { props.onTagClick(tag) }} className={props.scoutCss.ITEM_TAG}>
+                            {tag}
                         </button>
-                    )
-                }
-                {props.item.tags.map(tag => (
-                    <button key={tag} onClick={() => { props.onTagClick(tag) }} className={props.scoutCss.ITEM_TAG}>
-                        {tag}
-                    </button>
-                ))}
-                <p className="text-gray-700 text-base">{props.item.comment}</p>
+                    ))}
+                </div>
+                <p className="text-gray-700 text-base">{props.info.summary}</p>
+                {props.item.comment.length > 0 && (
+                    <>
+                        <p className="text-gray-700 text-base">- - - - - </p>
+                        <p className="text-gray-700 text-base">{props.item.comment}</p>
+                    </>
+                )}
             </div>
         </div>
     );
