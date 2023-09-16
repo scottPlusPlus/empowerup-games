@@ -1,18 +1,7 @@
-import Ico from '@/public/images/game/g_ico.ico';
-import OgImage from '@/public/images/game/game_soc.png';
-
-export const metadata = {
-    title: 'Indie Dev ++',
-    description: 'the NEXT LEVEL of indie gamedev community',
-    openGraph: {
-        images: [{
-            url: OgImage.src,
-        }],
-    },
-    icons: { icon: Ico.src },
-}
-
 import { PageGameClient } from './pageGameClient';
+import { mainMetadata } from '@/src/frontCode/metadata';
+
+export const metadata = mainMetadata
 
 export default function Home() {
     return (
