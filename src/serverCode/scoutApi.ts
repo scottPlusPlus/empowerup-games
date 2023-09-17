@@ -12,7 +12,7 @@ export async function fetchFromScoutRemix(cid:string, key:string): Promise<Scout
     // Send the data to the server in JSON format.
     // API endpoint where we send form data.
     var endpoint = "https://empower-kit.com/api/collection";
-    const bodyObj = { cid: "scott-gamedev", key: "egames472812379" };
+    const bodyObj = { cid: cid, key: key };
     // Form the request for sending data to the server.
     const options = {
         // The method is POST because we are sending data.

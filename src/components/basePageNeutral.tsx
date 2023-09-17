@@ -1,4 +1,4 @@
-import { gameCommonCss } from "../frontCode/gameCss"
+import { gameCss } from "../frontCode/gameCss"
 import { BaseWidth } from "./BaseWidth"
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
 
 export function BasePageNeutral(props: Props) {
     return (
-        <div className={gameCommonCss.bgNeutral}>
+        <div className={gameCss.bgNeutral}>
             <BaseWidth>
                 {props.children}
             </BaseWidth>

@@ -11,7 +11,7 @@ import { deepCopyArray } from "@/src/agnostic/utils/arrayUtils";
 import { ScoutCss } from "./ScoutCss";
 import SearchInputField from "./SearchInputField";
 import { BaseWidth } from "../BaseWidth";
-import { gameCommonCss } from "@/src/frontCode/gameCss";
+import { gameCss } from "@/src/frontCode/gameCss";
 
 type Props = {
     loadedItems: ScoutItem[],
@@ -93,7 +93,7 @@ export default function SearchableItemDisplay(props: Props) {
 
     return (
         <>
-            <header className={"fixed top-14 left-0 right-0 py-2 z-40 shadow-md " + gameCommonCss.bgNeutral}>
+            <header className={"fixed top-12 left-0 right-0 py-2 z-40 shadow-md " + gameCss.bgNeutral}>
                 <BaseWidth>
                     <SearchInputField searchTerms={deepCopyArray(searchTerms)} onChange={(x) => { handleSearchUpdate(x) }} />
                 </BaseWidth>

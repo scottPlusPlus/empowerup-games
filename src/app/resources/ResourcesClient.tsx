@@ -1,6 +1,5 @@
 'use client'
 
-import { BaseHeader } from "@/src/components/BaseHeader"
 import { ScoutCss } from "@/src/components/scout/ScoutCss"
 import SearchableItemDisplay from "@/src/components/scout/SearchableItemDisplay"
 import { submitAnalytics } from "@/src/frontCode/dataUtils"
@@ -30,8 +29,6 @@ export default function ResourcesPageClient(props: ResourcesPageProps) {
 
     return (
         <>
-            <BaseHeader></BaseHeader>
-            <div className="h-12"></div>
             <SearchableItemDisplay
                 loadedItems={props.loadedItems}
                 initialTerms={[]}
@@ -40,7 +37,5 @@ export default function ResourcesPageClient(props: ResourcesPageProps) {
                 submitAnalytics={scoutSubmitAnalytics}
             />
         </>
-
-
     )
 }

@@ -1,7 +1,7 @@
 import ButtonStandard from "../agnostic/components/ButtonStandard"
 import { ButtonProps } from "./cssCommon"
 
-export const gameCommonCss = {
+export const gameCss = {
     padding: "p-8",
     actionButton: gameActionButton,
     textH1: "text-6xl font-bold mb-4 font-sans",
@@ -26,6 +26,7 @@ export const gameCommonCss = {
     btnColorHover: "bg-violet-600",
 
     bgNeutral: "bg-gradient-to-r from-gray-700 to-gray-900",
+    scoutTag: "inline-block bg-purple-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-800 mr-2 mt-2"
 }
 
 function gameActionButton(props: ButtonProps) {
