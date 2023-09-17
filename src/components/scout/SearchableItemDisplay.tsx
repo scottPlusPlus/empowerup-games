@@ -12,6 +12,7 @@ import { ScoutCss } from "./ScoutCss";
 import SearchInputField from "./SearchInputField";
 import { BaseWidth } from "../BaseWidth";
 import { gameCss } from "@/src/frontCode/gameCss";
+import { GameQuoteBox } from "@/src/app/loot/GameQuoteBox";
 
 type Props = {
     loadedItems: ScoutItem[],
@@ -98,7 +99,9 @@ export default function SearchableItemDisplay(props: Props) {
                     <SearchInputField searchTerms={deepCopyArray(searchTerms)} onChange={(x) => { handleSearchUpdate(x) }} />
                 </BaseWidth>
             </header>
-            <div className="h-16"></div>
+            <div className="h-12"></div>
+            <GameQuoteBox></GameQuoteBox>
+            <div className="h-2"></div>
             <div>
                 <TagCloud items={props.loadedItems} onTagClick={handleTagClick} scoutCss={props.scoutCss} />
                 {hiddenItemMsg()}

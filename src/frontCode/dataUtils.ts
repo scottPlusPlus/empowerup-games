@@ -34,6 +34,7 @@ export async function submitAnalytics(
         console.log("skipped sending analytics: " + event);
         return;
     }
+    domain = "egames";
     const bodyData = {
         event: event,
         data: data,

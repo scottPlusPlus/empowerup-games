@@ -84,12 +84,12 @@ export function PageGameClient(props: Props) {
     }, []);
 
     function handleSubmitEmail(email: string): void {
-        submitEmail(email, anaData, "game");
+        submitEmail(email, anaData, "egame");
         thanksPopupSignal.trigger();
     }
 
     function handleAnaObserver(name: string) {
-        submitAnalytics(name, anaData, "game");
+        submitAnalytics(name, anaData, "egame");
     }
 
 
