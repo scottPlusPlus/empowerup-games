@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { allPosts } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
-import { BasePage } from '@/src/components/basePage'
 import MarkdownIt from 'markdown-it';
 import { BasePageNeutral } from '@/src/components/basePageNeutral';
 import { GameHeader } from '@/src/components/GameHeader';
