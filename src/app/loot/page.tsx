@@ -9,6 +9,7 @@ import { BasePageNeutral } from '@/src/components/basePageNeutral';
 import { GameHeader } from '@/src/components/GameHeader';
 import { gameCss } from '@/src/frontCode/gameCss';
 import { shuffleArray } from '@/src/agnostic/utils/arrayUtils';
+import { numFromSearchParams } from '@/src/frontCode/routeUtils';
 
 
 export const metadata = mainMetadata
@@ -70,6 +71,12 @@ export default async function ResourcesPage({ searchParams }: {
         BACKGROUND: "",
     }
 
+    // const overrideColumns = numFromSearchParams(searchParams, "cols") ?? undefined;
+    // if (overrideColumns){
+    //     const gc = "grid-cols-" + overrideColumns;
+    //     scoutCss.ITEM_GRID_COLS = "grid " + gc;
+    // }
+
 
     return (
         <BasePageNeutral>
@@ -81,4 +88,15 @@ export default async function ResourcesPage({ searchParams }: {
             />
         </BasePageNeutral>
     )
+
+    // return (
+    //     <div className={gameCss.bgNeutral + ' p-4'}>
+    //         <GameHeader></GameHeader>
+    //         <ResourcesPageClient
+    //             loadedItems={serverData.items}
+    //             infos={serverData.infos}
+    //             scoutCss={scoutCss}
+    //         />
+    //     </div>
+    // )
 }

@@ -10,6 +10,7 @@ type ResourcesPageProps = {
     loadedItems: ScoutItem[],
     infos: ScoutInfo[],
     scoutCss: ScoutCss,
+    overrideColumns?: number,
 }
 
 export default function ResourcesPageClient(props: ResourcesPageProps) {
@@ -36,14 +37,12 @@ export default function ResourcesPageClient(props: ResourcesPageProps) {
     });
 
     return (
-        <>
-            <SearchableItemDisplay
-                loadedItems={props.loadedItems}
-                initialTerms={[]}
-                infoMap={infoMap}
-                scoutCss={props.scoutCss}
-                submitAnalytics={scoutSubmitAnalytics}
-            />
-        </>
+        <SearchableItemDisplay
+            loadedItems={props.loadedItems}
+            initialTerms={[]}
+            infoMap={infoMap}
+            scoutCss={props.scoutCss}
+            submitAnalytics={scoutSubmitAnalytics}
+        />
     )
 }
