@@ -9,7 +9,7 @@ export type QuoteBoxProps = {
 export default function QuoteBox(props: QuoteBoxProps) {
 
   // const cssDefault = "outline outline-blue-500 border rounded bg-white p-4 px-6";
-  const cssDefault = "shadow-md rounded bg-white p-4 px-6";
+  const cssDefault = "shadow-md rounded bg-slate-200 p-4 px-6";
   const css = !props.cssOverrides ? cssDefault : overideTailwindCssClasses(cssDefault, props.cssOverrides);
 
   return (

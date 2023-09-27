@@ -1,3 +1,7 @@
+import posthog from 'posthog-js';
+
+posthog.init('phc_95zmjuHYwj4k4nrJdIJTfzwwtig5nPQ3XoIoZgWq9sj', { api_host: 'https://app.posthog.com' })
+
 export function urlWithRef(doc:Document): string {
     var url = doc.URL;
     if (!url.includes("ref")) {
@@ -22,6 +26,7 @@ export async function submitEmail(
         domain: domain,
     };
     const endpoint = "/api/submitEmail";
+    posthog.capture('submitEmail', { data: data, domain:domain, email: email});
     await sendJson(endpoint, JSON.stringify(bodyData));
 }
 
@@ -41,6 +46,7 @@ export async function submitAnalytics(
         domain: domain,
     };
     const endpoint = "/api/submitAnalytics";
+    posthog.capture(event, { data: data, domain:domain});
     await sendJson(endpoint, JSON.stringify(bodyData));
 }
 
