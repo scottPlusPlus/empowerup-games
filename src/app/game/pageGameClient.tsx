@@ -73,6 +73,10 @@ export function PageGameClient(props: Props) {
         submitAnalytics(name, anaData, "egame");
     }
 
+    function handleLinkClick(name:string){
+        submitAnalytics("link-click-" + name, anaData, "egame");
+    }
+
 
     const bgNeutral = "bg-neutral-200";
     // const cssTextAlignment = "flex justify-center lg:justify-start";
@@ -88,7 +92,7 @@ export function PageGameClient(props: Props) {
 
     function sectionHero() {
         return (
-            <LayoutImageRightOrBtm imageSrc={ImgGameHero.src} imageAlt="flock of tweeting birds">
+            <LayoutImageRightOrBtm imageSrc={ImgGameHero.src} imageAlt="a team working on a game">
                 <div className={"flex text-white justify-center " + gameCss.bgHero}>
                     <div className="mt-auto mb-auto">
                         <div className="ml-auto mr-auto">
@@ -213,19 +217,37 @@ export function PageGameClient(props: Props) {
         return (
             <div className={gameCss.bgDark2 + " py-16 px-16"}>
                 <BaseWidth>
-                    <MainQuoteBox></MainQuoteBox>
+                    <MainQuoteBox handleLinkClick={handleLinkClick}></MainQuoteBox>
                 </BaseWidth>
-                <div className="py-6"></div>
+            </div>
+        )
+    }
+
+    function sectionProducts() {
+        return (
+            <div className={gameCss.bgDark2 + " py-16 px-16"}>
 
                 <BaseWidth>
-                    <ProductPreviewBox imageSrc={ImgProductExample.src}>
-                        <p>This is a product description</p>
+                    <div className="space-y-6">
+                    <h3 className={gameCss.textH3 + " " + gameCss.textColorLight}>Products</h3>
+                    <ProductPreviewBox imageSrc={ImgProductExample.src} imageAlt="whatever">
+                        <h3 className={gameCss.textH3}>Resource Kit</h3>
+                        <div className="py-1"></div>
+                        <p>We're curating a FREE treasure trove of resources to help indie game developers on their journey.</p>
+                        <p>Available Now</p>
+                        <p>Potentially a few more lines</p>
+                        <p>Potentially a few more lines</p>
+                        <div className="py-2"></div>
+                        {ActionLine()}
+                    </ProductPreviewBox>
+
+                    <ProductPreviewBox imageSrc={ImgProductExample.src} imageAlt="whatever">
+                        <p>This is a product description. but what if it was long?  like, reaaaaaaly long?  No no, longer than that.  at least like... so it definitely fills up the width of whatever container it's in yo</p>
                         <p>This is a product description</p>
                         <p>This is a product description</p>
                     </ProductPreviewBox>
+                    </div>
                 </BaseWidth>
-
-
             </div>
         )
     }
@@ -266,6 +288,11 @@ export function PageGameClient(props: Props) {
             <NamedObserver name='game-visit-quote' onObserve={handleAnaObserver} />
             <section>
                 {sectionQuote()}
+            </section>
+
+            <NamedObserver name='game-visit-products' onObserve={handleAnaObserver} />
+            <section>
+                {sectionProducts()}
             </section>
 
 

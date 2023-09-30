@@ -24,7 +24,7 @@ export const gameCss = {
     bgDark2: "bg-gray-800",
     textDark: "text-stone-800",
     btnColorHover: "bg-violet-600",
-
+    textColorLight: "text-slate-300",
     bgNeutral: "bg-gradient-to-r from-gray-700 to-gray-900",
     scoutTag: "inline-block bg-purple-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-800 mr-2 mt-2"
 }
