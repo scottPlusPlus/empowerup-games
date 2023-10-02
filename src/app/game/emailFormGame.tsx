@@ -2,11 +2,12 @@
 
 import ArrowWithHover from "@/src/agnostic/components/ArrowWithHover";
 import { CssPropsCommon } from "@/src/frontCode/cssCommon";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 type Props = {
     onSubmitEmail?: (arg0: string) => void,
     cssCommon: CssPropsCommon,
+    children?: ReactNode,
 }
 
 export default function EmailFormGame(props: Props) {
@@ -39,6 +40,15 @@ export default function EmailFormGame(props: Props) {
 
     const MyButton = props.cssCommon.actionButton!;
 
+    function buttonContent(){
+        if (props.children){
+            return props.children;
+        }
+        return (
+                "Join Wait List"
+            )
+    }
+
     return (
         <div>
             <div>
@@ -54,8 +64,7 @@ export default function EmailFormGame(props: Props) {
                     />
 
                     <MyButton handle={handleSubmit} disabled={buttonDisabled}>
-                        Join Waitlist
-                        {/* <ArrowWithHover /> */}
+                        {buttonContent()}
                     </MyButton>
                 </div>
                 {!isValidEmail && (

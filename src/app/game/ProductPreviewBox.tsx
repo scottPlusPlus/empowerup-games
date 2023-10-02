@@ -35,45 +35,4 @@ export function ProductPreviewBox(props: Props) {
         </div>
     )
 
-    // return (
-    //     <QuoteBox cssOverrides={cssOver} >
-    //         <div className="flex justify-center lg:justify-left">
-
-    //             <div className="flex flex-col lg:flex-row lg:gap-6">
-    //                 <div className={"flex "}>
-    //                     <div className="mx-auto">
-    //                         <img src={props.imageSrc} alt="gamedev product" width="256" height="256"></img>
-    //                     </div>
-    //                 </div>
-    //                 <div className={"flex w-full"}>
-    //                     <div className="mx-auto">
-    //                         {props.children}
-    //                     </div>
-    //                 </div>
-    //             </div>
-
-    //         </div>
-    //     </QuoteBox>
-    // )
-
-    // return (
-    //     <QuoteBox cssOverrides={cssOver} >
-    //         <Layout2ColMinLeft
-    //             leftContent={(
-    //                 // <div className="w-256 h-256">
-    //                 <img src={props.imageSrc} alt="coffee cup" width="420" height="420"></img>
-    //                 // <Image3x2 src={props.imageSrc}></Image3x2>
-
-    //                 // </div>
-    //             )}
-    //             rightContent={(
-    //                 <div className='flex h-full items-center'>
-    //                     <div className={cssText + " space-y-2"}>
-    //                         {props.children}
-    //                     </div>
-    //                 </div>
-    //             )}
-    //         />
-    //     </QuoteBox>
-    // )
 }
