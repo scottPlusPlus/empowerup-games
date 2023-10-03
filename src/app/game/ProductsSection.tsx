@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import ImgProductResources from "@/public/images/p_resources_1280.png"
 import ImgProductTeam from "@/public/images/p_team_1280.png"
-import ImgProductExample from "@/public/images/game/product_example_256.png"
+import ImgProductInfluencers from "@/public/images/p_influencers_1280.png"
 import EmailFormGame from "./emailFormGame";
 import { useStateWithLocalStorage } from "@/src/agnostic/client/useStateWithLocalStorage";
 import { submitEmail } from "@/src/frontCode/dataUtils";
@@ -15,6 +15,8 @@ type Props = {
 }
 
 export function ProductSection(props: Props) {
+
+    const flavorTextCss = "text-gray-700 w-full justify-center";
 
     const [communityEmail, saveCommunityEmail] = useStateWithLocalStorage("communityEmail", "");
 
@@ -36,16 +38,29 @@ export function ProductSection(props: Props) {
         saveCommunityEmail("");
     }
 
-
-
     const GoButton = gameCss.actionButton;
 
+    function flavorText(txt:string){
+        return (
+            <div className="flex w-full justify-center text-gray-800 pb-4">
+                <div>{txt}</div>
+            </div>
+        )
+    }
+
+    function flavorTextHint(txt:string){
+        return (
+            <div className="flex w-full justify-center text-gray-700 pb-4">
+                <div>{txt}</div>
+            </div>
+        )
+    }
+
     return (
-        <div className={gameCss.bgDark2 + " py-16 px-16"}>
+        <div className={gameCss.bgDark2 + " py-16"}>
 
             <BaseWidth>
-                <div className="space-y-6">
-                    <h3 className={gameCss.textH3 + " " + gameCss.textColorLight}>Products</h3>
+                    <h3 className={gameCss.textH3 + " " + gameCss.textColorLight + " pb-4"}>How We Can Help:</h3>
 
                     <ProductPreviewBox imageSrc={ImgProductResources.src} imageAlt="whatever">
                         <div className="space-y-2">
@@ -54,10 +69,11 @@ export function ProductSection(props: Props) {
                             <p>All the best tools in one place, regularly updated</p>
                             <div className="py-2"></div>
                             <Link onClick={() => props.handleLinkClick("prod-resources")} href="./loot">
-                                <GoButton>Check it</GoButton>
+                                <GoButton>FREE Access</GoButton>
                             </Link>
                         </div>
                     </ProductPreviewBox>
+                    {flavorText("the Library contained many secrets.  Would they be found?  Would they be harnessed?")}
 
                     <ProductPreviewBox imageSrc={ImgProductTeam.src} imageAlt="two indie game developers shaking hands">
                         <div className="space-y-2">
@@ -78,9 +94,9 @@ export function ProductSection(props: Props) {
                            
                         </div>
                     </ProductPreviewBox>
-
+                    {flavorText("several Aethercords wound together conduct far more power than you would expect")}
                     
-                    <ProductPreviewBox imageSrc={ImgProductTeam.src} imageAlt="two indie game developers shaking hands">
+                    <ProductPreviewBox imageSrc={ImgProductInfluencers.src} imageAlt="two indie game developers shaking hands">
                         <div className="space-y-2">
                             <h3 className={gameCss.textH3}>Influencer Database</h3>
                             <p>Easily find the influencers who are most likely to fall in love with your game.</p>
@@ -98,7 +114,8 @@ export function ProductSection(props: Props) {
                            
                         </div>
                     </ProductPreviewBox>
-                </div>
+                    {flavorText("though spread throughout the 'verse, there was no Influencer who could hide from the artifact")}
+
             </BaseWidth>
         </div>
     )

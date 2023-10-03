@@ -23,15 +23,12 @@ import { MainQuoteBox } from "./MainQuoteBox"
 import { gameCss } from '@/src/frontCode/gameCss';
 import Head from 'next/head';
 import { ProductSection } from "./ProductsSection"
+import { GameNav } from "@/src/components/GameNav"
 
 type Props = {
     beta: boolean
 }
 
-
-const junk = {
-    btnColor: "bg-blue-500"
-}
 
 function gameActionButton(props: ButtonProps) {
     return (
@@ -99,15 +96,15 @@ export function PageGameClient(props: Props) {
 
                                 <div className={cssTextAlignment}>
                                     <h1 className={gameCss.textH1 + "mb-6"}>
-                                        the <span className="bg-gradient-to-b from-white to-pink-500 bg-clip-text text-transparent">NEXT LEVEL</span> of<br></br>Gamedev Community
+                                        emPower <span className="text-pink-500">UP</span> your Indie Game Journey!
                                     </h1>
                                 </div>
                                 <div className={`${cssTextAlignment} ${gameCss.textBaseBig}`}>
-                                    the BEST place for indie creators to connect with gamers and each other
+                                Assemble your team, ignite buzz, and equip YOUR game for success with these tools
                                 </div>
-                                <div className={cssTextAlignment + " pt-8"}>
+                                {/* <div className={cssTextAlignment + " pt-8"}>
                                     {ActionLine()}
-                                </div>
+                                </div> */}
 
                             </div>
                         </div>
@@ -214,7 +211,7 @@ export function PageGameClient(props: Props) {
 
     function sectionQuote() {
         return (
-            <div className={gameCss.bgDark2 + " py-16 px-16"}>
+            <div className={gameCss.bgDark3 + " py-16 px-16"}>
                 <BaseWidth>
                     <MainQuoteBox handleLinkClick={handleLinkClick}></MainQuoteBox>
                 </BaseWidth>
@@ -231,7 +228,12 @@ export function PageGameClient(props: Props) {
 
             <ThanksPopup popupColor="bg-pink-500" openSignal={thanksPopupSignal}></ThanksPopup>
 
+            <NamedObserver name='game-visit-products' onObserve={handleAnaObserver} />
             <section>
+                <ProductSection handleLinkClick={handleLinkClick}/>
+            </section>
+
+            {/* <section>
                 <div className={`py-16 ${gameCss.bgDark2}`}>
                     <CenterMaxWidth minXPad={16}>
                         <FadeUp>
@@ -254,25 +256,20 @@ export function PageGameClient(props: Props) {
             <NamedObserver name='game-visit-faq' onObserve={handleAnaObserver} />
             <section>
                 {sectionFaq()}
-            </section>
+            </section> */}
 
             <NamedObserver name='game-visit-quote' onObserve={handleAnaObserver} />
             <section>
                 {sectionQuote()}
             </section>
 
-            <NamedObserver name='game-visit-products' onObserve={handleAnaObserver} />
-            <section>
-                <ProductSection handleLinkClick={handleLinkClick}/>
-            </section>
+
 
 
             <div className='py-8'></div>
             <FloatingFooter showBelowPageYOffset={400} cssOverride={gameCss.bgFooter} >
                 <div className="w-full p-4 flex justify-center">
-                    <div className="max-w-s">
-                        {ActionLine()}
-                    </div>
+                    <GameNav/>
                 </div>
             </FloatingFooter>
             {/* <Cta /> */}

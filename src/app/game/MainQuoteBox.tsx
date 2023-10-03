@@ -39,7 +39,7 @@ export function MainQuoteBox(props: Props) {
             </div>
             <div className='flex items-center'>
                 <div className={cssText + " space-y-2"}>
-                    <p>I started empowerUp to help indie game devs find the success they deserve.</p>
+                    <p>I started empowerUp.games to help indie game devs find the success they deserve.</p>
 
                     <p>Before mastering web development, I worked for over a decade in games, wearing hats as an artist, game designer, and programmer.  I've worked at large 500 person studios and even failed a <a className={gameCss.textLink} href="https://www.youtube.com/watch?v=J_bg38y_AHw"  target="_blank">kickstarter for my own game</a>.</p>
 

@@ -11,6 +11,7 @@ import TwitterLogo from '@/public/images/twitter_logo.svg';
 import ArrowSvg from '@/public/images/right-arrow-svgrepo-com.svg';
 // import ArrowSvg from '@/public/images/right-arrow-pixels.svg';
 import Image from "next/image";
+import { GameNav } from "./GameNav";
 
 export function GameHeader() {
 
@@ -66,24 +67,7 @@ export function GameHeader() {
     return (
         <>
             <header className={"fixed top-0 left-0 right-0 w-full flex justify-center shadow-md z-50 py-2 " + bgcss}>
-                <BaseWidth>
-                    <div className="flex w-full items-center">
-                        <div>
-                            {Logo()}
-                        </div>
-                        <div className='flex-grow'></div>
-                        <div className="text-white pr-4">
-                            {"get in touch "}
-                        </div>
-                        <div className="text-white pr-4">
-                        <Image src={ArrowSvg} alt="arrow" width={28} height={28} />
-                        </div>
-                       
-                        <div>
-                            {TwitterLink()}
-                        </div>
-                    </div>
-                </BaseWidth>
+                <GameNav/>
             </header>
             <div className="h-14"></div>
         </>
