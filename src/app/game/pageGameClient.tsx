@@ -205,7 +205,7 @@ export function PageGameClient(props: Props) {
 
     function sectionQuote() {
         return (
-            <div className={gameCss.bgDark3 + " py-16 px-16"}>
+            <div className={gameCss.bgDark3 + " py-16"}>
                 <BaseWidth>
                     <MainQuoteBox handleLinkClick={handleLinkClick}></MainQuoteBox>
                 </BaseWidth>
