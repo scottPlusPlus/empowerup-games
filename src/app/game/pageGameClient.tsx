@@ -1,10 +1,7 @@
 "use client"
 
 import FloatingFooter from "@/src/agnostic/components/FloatingFooter"
-import { ButtonProps, CssPropsCommon } from "@/src/frontCode/cssCommon"
-
-import ScrollTextComponent from "@/src/agnostic/components/ScrollTextComponent"
-import { CenterMaxWidth } from "@/src/agnostic/components/CenterMaxWidth"
+import { ButtonProps } from "@/src/frontCode/cssCommon"
 import LayoutImageRightOrBtm from "@/src/agnostic/components/LayoutImageRightOrBtm"
 import ImgGameHero from "@/public/images/game/game-hero-1280.png"
 import ImgGameHero2 from "@/public/images/game/game-hero-2-1280.png"
@@ -14,15 +11,12 @@ import { Signal } from "@/src/agnostic/utils/Signal"
 import NamedObserver from "@/src/agnostic/components/NamedObserver"
 import { urlWithRef, submitAnalytics, submitEmail } from "@/src/frontCode/dataUtils"
 import { useEffect } from "react"
-import ParticleButton from "./ParticleButton"
 import ButtonStandard from "@/src/agnostic/components/ButtonStandard"
-import ButtonGlow from "./ButtonGlow"
 import { ThanksPopup } from "@/src/agnostic/components/ThanksPopup"
 import { BaseWidth } from "@/src/components/BaseWidth"
 import { MainQuoteBox } from "./MainQuoteBox"
 import { gameCss } from '@/src/frontCode/gameCss';
-import Head from 'next/head';
-import { ProductSection } from "./ProductsSection"
+import { ProductsSection } from "./ProductsSection"
 import { GameNav } from "@/src/components/GameNav"
 
 type Props = {
@@ -230,7 +224,7 @@ export function PageGameClient(props: Props) {
 
             <NamedObserver name='game-visit-products' onObserve={handleAnaObserver} />
             <section>
-                <ProductSection handleLinkClick={handleLinkClick}/>
+                <ProductsSection handleLinkClick={handleLinkClick}/>
             </section>
 
             {/* <section>

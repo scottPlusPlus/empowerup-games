@@ -4,7 +4,9 @@ import { ButtonProps } from "@/src/frontCode/cssCommon";
 function ButtonPixelShape(props: ButtonProps) {
 
     function handleClick() {
-        props.handle();
+        if (props.handle){
+            props.handle();
+        }
     }
 
     const pointsArray1: [number, number][] = [

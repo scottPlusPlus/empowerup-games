@@ -1,3 +1,5 @@
+'use client'
+
 import { BaseWidth } from "@/src/components/BaseWidth";
 import { gameCss } from "@/src/frontCode/gameCss";
 import { ProductPreviewBox } from "./ProductPreviewBox";
@@ -7,17 +9,20 @@ import ImgProductResources from "@/public/images/p_resources_1280.png"
 import ImgProductTeam from "@/public/images/p_team_1280.png"
 import ImgProductInfluencers from "@/public/images/p_influencers_1280.png"
 import EmailFormGame from "./emailFormGame";
-import { useStateWithLocalStorage } from "@/src/agnostic/client/useStateWithLocalStorage";
+import { useStateWithLocalStorage } from "@/src/app/useStateWithLocalStorage"
 import { submitEmail } from "@/src/frontCode/dataUtils";
+import { useEffect, useState } from "react";
 
 type Props = {
     handleLinkClick: (str: string) => void
 }
 
-export function ProductSection(props: Props) {
+export function ProductsSection(props: Props) {
+
 
     const flavorTextCss = "text-gray-700 w-full justify-center";
 
+    
     const [communityEmail, saveCommunityEmail] = useStateWithLocalStorage("communityEmail", "");
 
     function submitCommunityEmail(email:string){

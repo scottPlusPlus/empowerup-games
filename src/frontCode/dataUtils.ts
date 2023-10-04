@@ -1,6 +1,21 @@
-import posthog from 'posthog-js';
+"use client"
 
-posthog.init('phc_95zmjuHYwj4k4nrJdIJTfzwwtig5nPQ3XoIoZgWq9sj', { api_host: 'https://app.posthog.com' })
+import posthog from 'posthog-js';
+import { nextJsOnClient } from '../sharedCode/nextJSUtils';
+
+
+var inited = false;
+
+function ensureInit(){
+    if (inited){
+        return;
+    }
+    if (!nextJsOnClient()){
+        return;
+    }
+    posthog.init('phc_95zmjuHYwj4k4nrJdIJTfzwwtig5nPQ3XoIoZgWq9sj', { api_host: 'https://app.posthog.com' })
+    inited = true;
+}
 
 export function urlWithRef(doc:Document): string {
     var url = doc.URL;
@@ -26,6 +41,7 @@ export async function submitEmail(
         domain: domain,
     };
     const endpoint = "/api/submitEmail";
+    ensureInit();
     posthog.capture('submitEmail', { data: data, domain:domain, email: email});
     await sendJson(endpoint, JSON.stringify(bodyData));
 }
@@ -46,6 +62,7 @@ export async function submitAnalytics(
         domain: domain,
     };
     const endpoint = "/api/submitAnalytics";
+    ensureInit();
     posthog.capture(event, { data: data, domain:domain});
     await sendJson(endpoint, JSON.stringify(bodyData));
 }
@@ -65,6 +82,9 @@ async function sendJson(endpoint: string, jsonString: string): Promise<void> {
 var firstLocalWarning = false;
 
 function skipSendingData() {
+    if (!nextJsOnClient()){
+        return true;
+    }
     const local = window.location.href.includes("localhost");
     if (local) {
         if (!firstLocalWarning) {
