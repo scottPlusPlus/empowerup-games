@@ -1,5 +1,5 @@
 import { nowHHMMSS } from '@/agnostic/utils/timeUtils';
-import { fetchFromScoutRemix } from '@/serverCode/scoutApi';
+import { ScoutResponse, fetchFromScoutRemix } from '@/serverCode/scoutApi';
 import { BasePage } from '@/src/components/basePage';
 import { mainMetadata } from '@/src/frontCode/metadata';
 import ResourcesPageClient from './ResourcesClient';
@@ -9,7 +9,6 @@ import { BasePageNeutral } from '@/src/components/basePageNeutral';
 import { GameHeader } from '@/src/components/GameHeader';
 import { gameCss } from '@/src/frontCode/gameCss';
 import { shuffleArray } from '@/src/agnostic/utils/arrayUtils';
-import { numFromSearchParams } from '@/src/frontCode/routeUtils';
 
 
 export const metadata = mainMetadata
@@ -21,6 +20,17 @@ async function getServerDtata() {
     const now = nowHHMMSS();
     console.log(`${now} Empower-Kit: getServerData`);
 
+    try{
+        const pageData = await dataFromScout();
+        return { ...pageData, time: now };
+    
+    } catch(err:any){
+        console.log("err from scout: " + err.message);
+        return {collection:null, items:[], infos:[], time: now}
+    }
+}
+
+async function dataFromScout():Promise<ScoutResponse> {
     const pageData = await fetchFromScoutRemix("empower-up-games", "egames472812379");
     const itemCount = pageData.infos.length;
     console.log(`${itemCount} items from scout`);
@@ -47,7 +57,7 @@ async function getServerDtata() {
         return true;
     });
     pageData.items = shuffleArray(pageData.items);
-    return { ...pageData, time: now };
+    return pageData;
 }
 
 export default async function ResourcesPage({ searchParams }: {

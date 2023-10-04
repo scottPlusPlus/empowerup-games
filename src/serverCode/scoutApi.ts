@@ -1,7 +1,7 @@
 import { nowHHMMSS } from "../agnostic/utils/timeUtils";
 import { ScoutCollection, ScoutInfo, ScoutItem } from "../sharedCode/scoutTypes";
 
-type ScoutResponse = {
+export type ScoutResponse = {
     collection: ScoutCollection;
     items: Array<ScoutItem>;
     infos: Array<ScoutInfo>;
