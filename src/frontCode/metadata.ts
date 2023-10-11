@@ -12,6 +12,13 @@ export const mainMetadata = {
             },
         ],
     },
+    twitter: {
+        card: "summary_large_image",
+        title: "EmpowerUp.Games",
+        description: "Power UP your Indie Game Journey! Assemble your team, ignite buzz, and equip YOUR game for success",
+        creator: "@EmpowerUpGames",
+        images: [OgImage.src],
+      },
     icons: { icon: Ico.src },
     robots: {canonical: "https://empowerup.games"}
 };

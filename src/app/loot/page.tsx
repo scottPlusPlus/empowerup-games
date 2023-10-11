@@ -20,17 +20,17 @@ async function getServerDtata() {
     const now = nowHHMMSS();
     console.log(`${now} Empower-Kit: getServerData`);
 
-    try{
+    try {
         const pageData = await dataFromScout();
         return { ...pageData, time: now };
-    
-    } catch(err:any){
+
+    } catch (err: any) {
         console.log("err from scout: " + err.message);
-        return {collection:null, items:[], infos:[], time: now}
+        return { collection: null, items: [], infos: [], time: now }
     }
 }
 
-async function dataFromScout():Promise<ScoutResponse> {
+async function dataFromScout(): Promise<ScoutResponse> {
     const pageData = await fetchFromScoutRemix("empower-up-games", "egames472812379");
     const itemCount = pageData.infos.length;
     console.log(`${itemCount} items from scout`);

@@ -41,11 +41,11 @@ export default async function SinglePost({ params, searchParams }: {
   searchParams: Record<string, unknown> | null
 }) {
   const post = allPosts.find((post) => post.slug === params.slug);
-  const ab =  numFromSearchParams(searchParams, "ab") ?? 0;
+  const ab = numFromSearchParams(searchParams, "ab") ?? 0;
 
-  if (!post){
+  if (!post) {
     return notFound()
-  } 
+  }
 
   const tocMarker = '@@TOC@@';
   var postMarkdown = post.body.raw;
@@ -69,7 +69,7 @@ export default async function SinglePost({ params, searchParams }: {
   // })
   // console.log(parsedHeadings)
 
-  function tocContent(){
+  function tocContent() {
     return (
       <div className='prose prose-li:my-0 prose-ul:my-0 prose-a:text-blue-500 prose-a:font-[550] prose-a:no-underline hover:prose-a:underline'>
         <div dangerouslySetInnerHTML={{ __html: tocHtml }} />
@@ -77,35 +77,35 @@ export default async function SinglePost({ params, searchParams }: {
     )
   }
 
-  function articleContent(){
+  function articleContent() {
     return (
       <article className='mt-8 mb-16'>
-      <h1 className="h3 text-slate-100 mb-4">{post!.title}</h1>
-      {/* <div className="prose text-slate-200 font-[350] max-w-none prose-p:leading-normal prose-headings:text-slate-100 prose-a:text-blue-500 prose-a:font-[550] prose-a:no-underline hover:prose-a:underline"> */}
-      <div className="prose text-lg text-slate-200 max-w-none prose-p:leading-normal prose-headings:text-slate-100 prose-a:text-blue-500 prose-a:no-underline hover:prose-a:underline">
-        <div dangerouslySetInnerHTML={{ __html: articleHtml }} />
-      </div>
-    </article>
+        <h1 className="h3 text-slate-100 mb-4">{post!.title}</h1>
+        {/* <div className="prose text-slate-200 font-[350] max-w-none prose-p:leading-normal prose-headings:text-slate-100 prose-a:text-blue-500 prose-a:font-[550] prose-a:no-underline hover:prose-a:underline"> */}
+        <div className="prose text-lg text-slate-200 max-w-none prose-p:leading-normal prose-headings:text-slate-100 prose-a:text-blue-500 prose-a:no-underline hover:prose-a:underline">
+          <div dangerouslySetInnerHTML={{ __html: articleHtml }} />
+        </div>
+      </article>
     )
   }
 
 
-  if (ab == 1){
+  if (ab == 1) {
     return (
       <BasePageNeutral>
         <GameHeader></GameHeader>
         <div className="flex relative">
-  
-        {/* Left Column (Fixed) */}
-        <div className="w-1/4 h-screen fixed left-0 top-14 overflow-y-auto">
-          {tocContent()}  
+
+          {/* Left Column (Fixed) */}
+          <div className="w-1/4 h-screen fixed left-0 top-14 overflow-y-auto">
+            {tocContent()}
+          </div>
+
+          {/* Right Column (Scrollable) */}
+          <div className="w-3/4 ml-auto p-4 overflow-y-auto">
+            {articleContent()}
+          </div>
         </div>
-        
-        {/* Right Column (Scrollable) */}
-        <div className="w-3/4 ml-auto p-4 overflow-y-auto">
-          {articleContent()}
-        </div>
-      </div>
       </BasePageNeutral>
     )
   }
@@ -116,16 +116,16 @@ export default async function SinglePost({ params, searchParams }: {
       <GameHeader></GameHeader>
       <div className="flex relative">
 
-      {/* Left Column (Fixed) */}
-      {/* <div className="w-1/4 h-screen fixed left-0 top-14 overflow-y-auto">
+        {/* Left Column (Fixed) */}
+        {/* <div className="w-1/4 h-screen fixed left-0 top-14 overflow-y-auto">
         {tocContent()}  
       </div> */}
-      
-      {/* Right Column (Scrollable) */}
-      <div className="w-full ml-auto overflow-y-auto">
-        {articleContent()}
+
+        {/* Right Column (Scrollable) */}
+        <div className="w-full ml-auto overflow-y-auto">
+          {articleContent()}
+        </div>
       </div>
-    </div>
     </BasePageNeutral>
   )
 }
